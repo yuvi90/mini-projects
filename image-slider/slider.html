@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1c;
+        }
+        .container {
+            width: 60vw;
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #fff;
+            border-radius: 10px;
+        }
+        img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #img2 {
+            animation: slide 3s ease 30s forwards;
+        }
+        #img3 {
+            animation: slide 3s ease 25s forwards;
+        }
+        #img4 {
+            animation: slide 3s ease 20s forwards;
+        }
+        #img5 {
+            animation: slide 3s ease 15s forwards;
+        }
+        #img6 {
+            animation: slide 3s ease 10s forwards;
+        }
+        #img7 {
+            animation: slide 3s ease 5s forwards;
+        }
+        #img8 {
+            animation: slide 3s ease 1s forwards;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0%);}
+            100% { transform: translateX(-100%);}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="img1" src="1.jpg" alt="">
+        <img id="img2" src="2.jpg" alt="">
+        <img id="img3" src="3.jpg" alt="">
+        <img id="img4" src="4.jpg" alt="">
+        <img id="img5" src="5.jpg" alt="">
+        <img id="img6" src="6.jpg" alt="">
+        <img id="img7" src="7.jpg" alt="">
+        <img id="img8" src="8.jpg" alt="">
+    </div>
+</body>
+</html>
