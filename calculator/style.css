@@ -72,7 +72,9 @@ button {
 button:hover {
     background-color: rgb(92, 192, 104);
 }
-
+button.active {
+    background-color: rgb(92, 192, 104);
+}
 button.num {
     background-color: #606060;
 }
@@ -83,6 +85,9 @@ button.operator {
     background-color: orange;
 }
 button.operator:hover {
+    background-color: rgb(255, 193, 79);
+}
+button.operator.active {
     background-color: rgb(255, 193, 79);
 }
 button.util {

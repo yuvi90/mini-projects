@@ -10,6 +10,8 @@ class Calculator {
         this.previousOperand = null;
         this.currentOperand = null;
         this.currentOperation = null;
+        this.IsOperatorClicked = null;
+        this.IsEqualClicked = null;
     }
 
     compute(operator, input1, input2) {
@@ -32,6 +34,8 @@ class Calculator {
         this.previousOperand = null;
         this.currentOperand = null;
         this.currentOperation = null;
+        this.IsOperatorClicked = null;
+        this.IsEqualClicked = null;
     }
 
     deleteInput() {
@@ -62,10 +66,22 @@ class Calculator {
             this.previousOperand = null;
             this.currentOperand = null;
             this.currentOperation = null;
+            this.IsOperatorClicked = null;
+            this.IsEqualClicked = true;
         }
     }
 
     appendNumbers(event) {
+        // If Equals Button Clicked
+        if (this.IsEqualClicked) {
+            this.inputText.innerText = "0";
+            this.IsEqualClicked = false;
+        }
+        // If Operator Button Clicked
+        if (this.IsOperatorClicked) {
+            this.inputText.innerText = "0";
+            this.IsOperatorClicked = false;
+        }
         // Adding Inputs
         if (this.inputText.innerText == "0") {
             if (event.target.innerText == ".") {
@@ -84,24 +100,25 @@ class Calculator {
     }
 
     operatorHandler(event) {
-        if (this.currentOperation) {
-            this.currentOperand = this.inputText.innerText;
-            this.inputText.innerText = this.compute(this.currentOperation, this.previousOperand, this.currentOperand);
-            this.currentOperation = event.target.innerText;
+        if (this.inputText.innerText != "0") {
+            if (this.currentOperation) {
+                this.currentOperand = this.inputText.innerText;
+                this.inputText.innerText = this.compute(this.currentOperation, this.previousOperand, this.currentOperand);
+                this.currentOperation = event.target.innerText;
+                this.previousOperand = this.inputText.innerText;
+                this.IsOperatorClicked = true;
+                return;
+            }
             this.previousOperand = this.inputText.innerText;
-            return;
+            this.currentOperation = event.target.innerText;
+            this.IsOperatorClicked = true;
         }
-        this.previousOperand = this.inputText.innerText;
-        this.currentOperation = event.target.innerText;
-        this.inputText.innerText = '0';
     }
 }
 
 const cal = new Calculator;
 
-
-// Event Handlers
-
+// Event Listeners
 cal.resetBtn.addEventListener('click', () => cal.reset());
 cal.delBtn.addEventListener('click', () => cal.deleteInput());
 cal.signBtn.addEventListener('click', () => cal.changeSign());
