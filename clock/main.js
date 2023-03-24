@@ -4,26 +4,31 @@ var centerCoordX = canvas.width / 2;
 var centerCoordY = canvas.height / 2;
 function drawFace() {
     ctx.beginPath();
-    ctx.arc(centerCoordX, centerCoordY, 300, 0, 2 * Math.PI);
-    ctx.fillStyle = 'grey';
+    ctx.arc(centerCoordX, centerCoordY, 290, 0, 2 * Math.PI);
+    ctx.fillStyle = '#F1EBBB';
+    ctx.strokeStyle = '#D65A31';
+    ctx.lineWidth = 10;
     ctx.fill();
+    ctx.stroke();
     ctx.closePath();
-    ctx.save();
-    ctx.translate(centerCoordX, centerCoordY);
     var angle = 30;
     for (var i = 1; i <= 12; i++) {
+        ctx.translate(centerCoordX, centerCoordY + 15);
         ctx.beginPath();
         ctx.rotate((angle * Math.PI) / 180);
-        ctx.font = "26px Arial";
+        ctx.translate(0, -250);
+        ctx.rotate((-angle * Math.PI) / 180);
+        ctx.font = "bold 40px Arial";
         ctx.textAlign = "center";
-        ctx.fillStyle = 'white';
-        ctx.fillText("".concat(i), 0, -250);
+        ctx.fillStyle = 'black';
+        ctx.fillText("".concat(i), 0, 0);
+        angle += 30;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
     }
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 function drawMinutesHand(angle) {
     ctx.beginPath();
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'black';
     ctx.translate(centerCoordX, centerCoordY);
     ctx.rotate((angle * Math.PI) / 180);
     ctx.fillRect(0, 0, 5, -220);
@@ -31,7 +36,7 @@ function drawMinutesHand(angle) {
 }
 function drawHourHand(angle) {
     ctx.beginPath();
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'black';
     ctx.translate(centerCoordX, centerCoordY);
     ctx.rotate((angle * Math.PI) / 180);
     ctx.fillRect(0, 0, 5, -150);
@@ -71,3 +76,16 @@ function startClock() {
     }, 1000);
 }
 startClock();
+// function drawCenterCircle() {
+//     ctx.beginPath();
+//     ctx.arc(centerCoordX, centerCoordY, 240, 0, 2 * Math.PI);
+//     ctx.fillStyle = 'green';
+//     ctx.fill();
+//     ctx.closePath();
+// }
+// drawFace();
+// drawCenterCircle();
+// drawSecondsHand(0);
+// drawSecondsHand(90);
+// drawSecondsHand(180);
+// drawSecondsHand(270);
