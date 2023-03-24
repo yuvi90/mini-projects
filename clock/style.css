@@ -9,9 +9,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: #000; */
+    background: #000;
 }
 
 #clock-canvas {
-    /* border: 2px solid #ca0101; */
+    border: 2px solid #ca0101;
 }
