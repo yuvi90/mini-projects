@@ -1,7 +1,8 @@
-var canvas = document.querySelector('canvas');
-var ctx = canvas.getContext('2d');
-var centerCoordX = canvas.width / 2;
-var centerCoordY = canvas.height / 2;
+"use strict";
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+const centerCoordX = canvas.width / 2;
+const centerCoordY = canvas.height / 2;
 function drawFace() {
     ctx.beginPath();
     ctx.arc(centerCoordX, centerCoordY, 290, 0, 2 * Math.PI);
@@ -11,8 +12,8 @@ function drawFace() {
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
-    var angle = 30;
-    for (var i = 1; i <= 12; i++) {
+    let angle = 30;
+    for (let i = 1; i <= 12; i++) {
         ctx.translate(centerCoordX, centerCoordY + 15);
         ctx.beginPath();
         ctx.rotate((angle * Math.PI) / 180);
@@ -21,7 +22,7 @@ function drawFace() {
         ctx.font = "bold 40px Arial";
         ctx.textAlign = "center";
         ctx.fillStyle = 'black';
-        ctx.fillText("".concat(i), 0, 0);
+        ctx.fillText(`${i}`, 0, 0);
         angle += 30;
         ctx.setTransform(1, 0, 0, 1, 0, 0);
     }
@@ -60,14 +61,13 @@ function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 function startClock() {
-    var seconds;
-    var minutes;
-    var hours;
-    setInterval(function () {
+    let seconds;
+    let minutes;
+    let hours;
+    setInterval(() => {
         seconds = new Date().getSeconds();
         minutes = new Date().getMinutes();
         hours = getTime12Hour(new Date().getHours());
-        // console.log(`${hours}:${minutes}:${seconds}`);
         clearCanvas();
         drawFace();
         drawMinutesHand(minutes * 6);
@@ -76,16 +76,3 @@ function startClock() {
     }, 1000);
 }
 startClock();
-// function drawCenterCircle() {
-//     ctx.beginPath();
-//     ctx.arc(centerCoordX, centerCoordY, 240, 0, 2 * Math.PI);
-//     ctx.fillStyle = 'green';
-//     ctx.fill();
-//     ctx.closePath();
-// }
-// drawFace();
-// drawCenterCircle();
-// drawSecondsHand(0);
-// drawSecondsHand(90);
-// drawSecondsHand(180);
-// drawSecondsHand(270);
