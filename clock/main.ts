@@ -4,6 +4,7 @@ const centerCoordX = canvas.width / 2;
 const centerCoordY = canvas.height / 2;
 
 function drawFace() {
+    // Drawing Face
     ctx.beginPath();
     ctx.arc(centerCoordX, centerCoordY, 290, 0, 2 * Math.PI);
     ctx.fillStyle = '#F1EBBB';
@@ -12,14 +13,15 @@ function drawFace() {
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
-
+    // Drawing Numbers
     let angle = 30;
     for (let i = 1; i <= 12; i++) {
-        ctx.translate(centerCoordX, centerCoordY + 15);
+        ctx.translate(centerCoordX, centerCoordY);
         ctx.beginPath();
         ctx.rotate((angle * Math.PI) / 180);
         ctx.translate(0, -250);
         ctx.rotate((-angle * Math.PI) / 180);
+        ctx.translate(0, 15);
         ctx.font = "bold 40px Arial";
         ctx.textAlign = "center";
         ctx.fillStyle = 'black';
@@ -28,7 +30,7 @@ function drawFace() {
         ctx.setTransform(1, 0, 0, 1, 0, 0);
     }
 }
-
+// Drawing MinuteHand
 function drawMinutesHand(angle: number) {
     ctx.beginPath();
     ctx.fillStyle = 'black';
@@ -38,6 +40,7 @@ function drawMinutesHand(angle: number) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
+// Drawing HourHand
 function drawHourHand(angle: number) {
     ctx.beginPath();
     ctx.fillStyle = 'black';
@@ -47,6 +50,7 @@ function drawHourHand(angle: number) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
+// Drawing SecondHand
 function drawSecondsHand(angle: number) {
     ctx.beginPath();
     ctx.translate(centerCoordX, centerCoordY);
@@ -56,6 +60,7 @@ function drawSecondsHand(angle: number) {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
+// Converting 24hr to 12hr
 function getTime12Hour(hours: number): number {
     if (hours > 12) {
         return hours - 12;
@@ -63,10 +68,12 @@ function getTime12Hour(hours: number): number {
     return hours;
 }
 
+// Clearing Canvas
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+// Init Clock
 function startClock() {
     let seconds: number;
     let minutes: number;
@@ -83,9 +90,7 @@ function startClock() {
         drawSecondsHand(seconds * 6);
     }, 1000)
 }
-
 startClock();
-
 
 // function drawCenterCircle() {
 //     ctx.beginPath();

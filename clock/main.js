@@ -14,11 +14,12 @@ function drawFace() {
     ctx.closePath();
     let angle = 30;
     for (let i = 1; i <= 12; i++) {
-        ctx.translate(centerCoordX, centerCoordY + 15);
+        ctx.translate(centerCoordX, centerCoordY);
         ctx.beginPath();
         ctx.rotate((angle * Math.PI) / 180);
         ctx.translate(0, -250);
         ctx.rotate((-angle * Math.PI) / 180);
+        ctx.translate(0, 15);
         ctx.font = "bold 40px Arial";
         ctx.textAlign = "center";
         ctx.fillStyle = 'black';
